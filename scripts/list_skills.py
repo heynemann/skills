@@ -7,9 +7,9 @@ def get(d):
     out = {}
     for x in open(d).read().splitlines():
         if x.startswith("name:"):
-            out["name"] = x.split(":")[1].strip()
+            out["name"] = x.split(":", 1)[1].strip()
         if x.startswith("description:"):
-            out["description"] = x.split(":")[1].strip()
+            out["description"] = x.split(":", 1)[1].strip()
     return out
 
 
