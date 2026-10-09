@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Print each skill's name and description from skills/*/SKILL.md."""
 import glob
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 
 
 def read_skill_fields(path):
@@ -20,7 +23,7 @@ def read_skill_fields(path):
 
 def main():
     rows = []
-    for path in glob.glob("skills/*/SKILL.md"):
+    for path in glob.glob(str(ROOT / "skills/*/SKILL.md")):
         fields = read_skill_fields(path)
         if "name" in fields and "description" in fields:
             rows.append(fields)
