@@ -1,0 +1,15 @@
+#!/bin/sh
+# Lint staged Markdown files with markdownlint-cli (config: .markdownlint.json).
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -z -- '*.md' | tr '\0' '\n')
+[ -z "$files" ] && exit 0
+
+if ! command -v markdownlint >/dev/null 2>&1; then
+	echo "pre-commit: markdownlint not found. Install it with: brew install markdownlint-cli" >&2
+	exit 1
+fi
+
+echo "$files" | tr '\n' '\0' | xargs -0 markdownlint || {
+	echo "pre-commit: fix the markdownlint errors above (markdownlint --fix <file> handles most)." >&2
+	exit 1
+}
