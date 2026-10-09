@@ -7,6 +7,7 @@ and installs with the [skills.sh](https://skills.sh) CLI.
 
 | Skill | Description | Docs |
 | --- | --- | --- |
+| [address-pr-comments](skills/address-pr-comments/SKILL.md) | Fix a PR's failing checks and answer every review comment (fix or rebut, then resolve) with the gh CLI. | [docs/address-pr-comments.md](docs/address-pr-comments.md) |
 | [go-http-api](skills/go-http-api/SKILL.md) | Go HTTP API services on Fiber v3, fx, zap, GORM/PostgreSQL, Redis, Prometheus and OpenTelemetry. | [docs/go-http-api.md](docs/go-http-api.md) |
 
 ## Install
