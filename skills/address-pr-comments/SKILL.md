@@ -65,7 +65,8 @@ Who you are: `gh api user --jq .login` (the *viewer*).
 **Checks.** `gh pr checks <number> --json name,state,bucket,link,workflow`.
 The command exits non-zero while checks fail (1) or are pending (8); read the
 JSON regardless. Every `bucket: "fail"` goes in the inventory. Pending checks
-are caught by step 8.
+are caught by step 8. `no checks reported on the '<branch>' branch` (no JSON)
+means the repository runs no checks on this PR.
 
 **Review threads.** Unresolved threads, skipping threads where every comment is
 the viewer's:
@@ -219,9 +220,10 @@ failures.
 gh pr checks <number> --watch --fail-fast
 ```
 
-Right after a push the new head may report no checks yet; wait ten seconds and
-retry. On a failure, run step 4 for it, push, and watch again. Stop after three
-rounds of fixes.
+With no checks reported in step 3, there is nothing to watch: skip this step.
+Otherwise, right after a push the new head may report no checks yet; wait ten
+seconds and retry. On a failure, run step 4 for it, push, and watch again. Stop
+after three rounds of fixes.
 
 Done when every check passes, or three rounds are spent.
 

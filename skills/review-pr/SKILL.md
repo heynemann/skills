@@ -157,6 +157,8 @@ finding:
 - `suggestion` (optional): replacement code for exactly lines
   `start_line`–`line` (or `line`) on the `RIGHT` side, in the file's
   indentation, opening and closing the same brackets the replaced lines do.
+  GitHub commits a suggestion on its own, so it must leave the file working
+  when applied alone; a change that also needs other lines gets no suggestion.
 
 **Standards sub-agent prompt** also includes the list of standards-source files
 from step 4, **plus the smell baseline from step 4** pasted in full (the
@@ -183,8 +185,9 @@ Drop findings that repeat an existing comment on the same lines:
 gh api repos/<owner>/<repo>/pulls/<number>/comments --paginate --jq '.[] | {path, line, body}'
 ```
 
-Each anchored finding becomes one comment. The body starts with the axis and
-kind, so authors can tell hard findings from judgement calls:
+Each anchored finding becomes one comment; a suggestion that would break the
+file when committed alone is dropped and its message kept. The body starts with
+the axis and kind, so authors can tell hard findings from judgement calls:
 
 ````markdown
 **Standards · possible Feature Envy**: <message>
