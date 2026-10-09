@@ -87,6 +87,54 @@ pins one stack (Fiber v3, fx, GORM/PostgreSQL, Redis, Prometheus,
 OpenTelemetry), one layout and a verification gate. Every service it builds
 looks like the last one, and none of them is done until the gate passes.
 
+## Pairs well with
+
+These aren't in this repo; they're other people's skills I keep installed next
+to mine. Each one fixes a different way an agent goes wrong.
+
+### Think before you build
+
+| Skill | By | Why it's worth it |
+| --- | --- | --- |
+| [grill-me](https://skills.sh/mattpocock/skills/grill-me) | Matt Pocock | A relentless interview that sharpens a plan before any code exists. The best fix for "that's not what I meant". |
+| [grill-with-docs](https://skills.sh/mattpocock/skills/grill-with-docs) | Matt Pocock | The same interview, writing ADRs and a glossary as you go. |
+| [tdd](https://skills.sh/mattpocock/skills/tdd) | Matt Pocock | Red-green-refactor, test first, for features and bug fixes. |
+| [improve-codebase-architecture](https://skills.sh/mattpocock/skills/improve-codebase-architecture) | Matt Pocock | Finds where your modules should get deeper, then grills you through the one you pick. |
+
+```bash
+npx skills add mattpocock/skills --skill grill-me --skill grill-with-docs --skill tdd --skill improve-codebase-architecture
+```
+
+### Keep it lean
+
+| Skill | By | Why it's worth it |
+| --- | --- | --- |
+| [ponytail](https://skills.sh/dietrichgebert/ponytail/ponytail) | [@DietrichGebert](https://github.com/DietrichGebert) | "Lazy senior dev" mode: the smallest change that fully solves the task. Agents stop adding layers nobody asked for. |
+| [ponytail-review](https://skills.sh/dietrichgebert/ponytail/ponytail-review) | [@DietrichGebert](https://github.com/DietrichGebert) | Reviews a change for correctness, safety and whether every line needs to exist. |
+| [caveman](https://skills.sh/juliusbrussee/caveman/caveman) | Julius Brussee | Terse replies: answer first, no fluff, every technical fact kept. Fewer tokens to read and to pay for. |
+| [caveman-commit](https://skills.sh/juliusbrussee/caveman/caveman-commit) | Julius Brussee | Conventional Commits messages that say the intent and nothing else. |
+
+```bash
+npx skills add dietrichgebert/ponytail --skill ponytail --skill ponytail-review
+npx skills add juliusbrussee/caveman --skill caveman --skill caveman-commit
+```
+
+### Make it look good
+
+| Skill | By | Why it's worth it |
+| --- | --- | --- |
+| [hallmark](https://skills.sh/nutlope/hallmark/hallmark) | Hassan El Mghari | Anti-AI-slop design for new pages, redesigns and audits, and can extract a style from a URL or screenshot. |
+| [frontend-design](https://skills.sh/anthropics/skills/frontend-design) | Anthropic | Distinctive visual direction and typography, so UI doesn't read as a template. |
+| [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | Vercel | Reviews UI code against the Web Interface Guidelines, accessibility included. |
+| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | Vercel | React and Next.js performance rules from Vercel Engineering. |
+| [vercel-composition-patterns](https://skills.sh/vercel-labs/agent-skills/vercel-composition-patterns) | Vercel | Component APIs that scale, without boolean-prop sprawl. |
+
+```bash
+npx skills add nutlope/hallmark --skill hallmark
+npx skills add anthropics/skills --skill frontend-design
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines --skill vercel-react-best-practices --skill vercel-composition-patterns
+```
+
 ## Install
 
 The [skills CLI](https://github.com/vercel-labs/skills) installs into Claude
