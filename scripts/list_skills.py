@@ -5,7 +5,12 @@ import glob
 
 def get(d):
     out = {}
-    for x in open(d).read().splitlines():
+    lines = open(d).read().splitlines()
+    if lines[:1] != ["---"]:
+        return out
+    for x in lines[1:]:
+        if x == "---":
+            break
         if x.startswith("name:"):
             out["name"] = x.split(":", 1)[1].strip()
         if x.startswith("description:"):
@@ -16,7 +21,9 @@ def get(d):
 def main():
     rows = []
     for d in glob.glob("skills/*/SKILL.md"):
-        rows.append(get(d))
+        r = get(d)
+        if "name" in r and "description" in r:
+            rows.append(r)
     with open("skills.txt", "w") as f:
         for r in rows:
             print(f"{r['name']}: {r['description']}")
