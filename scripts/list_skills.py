@@ -25,7 +25,7 @@ def main():
         if "name" in r and "description" in r:
             rows.append(r)
     with open("skills.txt", "w") as f:
-        for r in rows:
+        for r in sorted(rows, key=lambda r: r["name"]):
             print(f"{r['name']}: {r['description']}")
             f.write(f"{r['name']}: {r['description']}\n")
     print(f"{len(rows)} skills")
