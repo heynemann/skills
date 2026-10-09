@@ -26,7 +26,6 @@ def main():
             rows.append(r)
     for r in sorted(rows, key=lambda r: r["name"]):
         print(f"{r['name']}: {r['description']}")
-    print(f"{len(rows)} skills")
 
 
 if __name__ == "__main__":
