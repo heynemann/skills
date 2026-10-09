@@ -3,27 +3,27 @@
 import glob
 
 
-def get(d):
-    out = {}
-    lines = open(d).read().splitlines()
+def read_skill_fields(path):
+    fields = {}
+    lines = open(path).read().splitlines()
     if lines[:1] != ["---"]:
-        return out
-    for x in lines[1:]:
-        if x == "---":
+        return fields
+    for line in lines[1:]:
+        if line == "---":
             break
-        if x.startswith("name:"):
-            out["name"] = x.split(":", 1)[1].strip()
-        if x.startswith("description:"):
-            out["description"] = x.split(":", 1)[1].strip()
-    return out
+        if line.startswith("name:"):
+            fields["name"] = line.split(":", 1)[1].strip()
+        if line.startswith("description:"):
+            fields["description"] = line.split(":", 1)[1].strip()
+    return fields
 
 
 def main():
     rows = []
-    for d in glob.glob("skills/*/SKILL.md"):
-        r = get(d)
-        if "name" in r and "description" in r:
-            rows.append(r)
+    for path in glob.glob("skills/*/SKILL.md"):
+        fields = read_skill_fields(path)
+        if "name" in fields and "description" in fields:
+            rows.append(fields)
     for r in sorted(rows, key=lambda r: r["name"]):
         print(f"{r['name']}: {r['description']}")
 
